@@ -6,11 +6,11 @@ public class ProgramaLogico {
         Operaciones oper = new Operaciones();
 
         // Operadores lógicos regulares
-        boolean resultado = oper.esFalso() | oper.esVerdadero() | oper.esVerdadero();
-        System.out.println("El resultado fue " + resultado);
+//        boolean resultado = oper.esFalso() | oper.esVerdadero() | oper.esVerdadero();
+//        System.out.println("El resultado fue " + resultado);
 
         // Operadores lógicos de corto circuito || y &&
-        resultado = oper.esFalso() || oper.esVerdadero() || oper.esVerdadero();
+        boolean resultado = oper.esFalso() && oper.esVerdadero() && oper.esVerdadero();
         System.out.println("El resultado fue " + resultado);
     }
 
