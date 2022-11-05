@@ -5,4 +5,6 @@ module mx.utel.poo.dogtor {
 
     opens mx.utel.poo.dogtor to javafx.fxml;
     exports mx.utel.poo.dogtor;
+    exports mx.utel.poo.dogtor.views;
+    opens mx.utel.poo.dogtor.views to javafx.fxml;
 }
