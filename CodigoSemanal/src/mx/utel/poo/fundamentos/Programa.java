@@ -33,12 +33,20 @@ public class Programa {
     }
 
     private int imprimeMenu() {
-        System.out.println("PROGRAMA CALCULADORA");
-        System.out.println("1. Suma");
-        System.out.println("2. Resta");
-        System.out.println("3. Multiplicación");
-        System.out.println("4. División");
-        return pedirEntero("Selecciona una opción: ");
+        String menu = """
+                PROGRAMA CALCULADORA
+                    1. Suma
+                    2. Resta
+                    3. Multiplicación
+                    4. División
+                Selecciona una opción: """;
+        return pedirEntero(menu);
+//        System.out.println("PROGRAMA CALCULADORA");
+//        System.out.println("1. Suma");
+//        System.out.println("2. Resta");
+//        System.out.println("3. Multiplicación");
+//        System.out.println("4. División");
+//        return pedirEntero("Selecciona una opción: ");
     }
 
 }
