@@ -4,7 +4,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import mx.utel.poo.dogtor.views.MascotaController;
+import mx.utel.poo.dogtor.vistas.MascotaController;
 
 import java.io.IOException;
 
