@@ -24,19 +24,51 @@ public class Mascota {
         this.talla = talla;
     }
 
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public Talla getTalla() {
+        return talla;
+    }
+
+    public void setTalla(Talla talla) {
+        this.talla = talla;
+    }
+
+    public Especie getEspecie() {
+        return especie;
+    }
+
+    public void setEspecie(Especie especie) {
+        this.especie = especie;
+    }
+
+    public Genero getGenero() {
+        return genero;
+    }
+
+    public void setGenero(Genero genero) {
+        this.genero = genero;
+    }
+
+    public LocalDate getFechaNac() {
+        return fechaNac;
+    }
+
+    public void setFechaNac(LocalDate fechaNac) {
+        this.fechaNac = fechaNac;
+    }
+
     public int edad() {
         LocalDate hoy = LocalDate.now();
         Period per = Period.between(fechaNac, hoy);
         return per.getYears();
     }
-
-//    private int calcularEdad(int edadNatural) {
-//        return switch(talla) {
-//            case CHICA, MEDIANA -> 24 + ((edadNatural - 2) * 5);
-//            case GRANDE -> 24 + ((edadNatural - 2) * 6);
-//            case EXTRA_GRANDE -> 24 + ((edadNatural - 2) * 7);
-//        };
-//    }
 
     public void asignarPropietario(Propietario prop) {
         this.dueño = prop;
