@@ -5,34 +5,37 @@ import mx.utel.poo.dogtor.util.Genero;
 import mx.utel.poo.dogtor.util.Talla;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Programa {
+public class ProgramaListas {
 
     private Scanner scn = new Scanner(System.in).useDelimiter("\n");
 
     public static void main(String[] args) {
         Propietario dueño = new Propietario("Benito", "Bodoque", "5555-5555", "b.bodoque@correo.com");
-        Programa prog = new Programa();
-        Mascota[] mascotas = prog.iniciarAplicacion(dueño);
+        ProgramaListas prog = new ProgramaListas();
+        ArrayList<Mascota> mascotas = prog.iniciarAplicacion(dueño);
         prog.imprimeDatos( mascotas );
     }
 
-    private void imprimeDatos(Mascota[] mascotas) {
+    private void imprimeDatos(ArrayList<Mascota> mascotas) {
         for (Mascota msc : mascotas) {
             System.out.println(msc);
         }
     }
 
-    private Mascota[] iniciarAplicacion(Propietario dueño) {
+    private ArrayList<Mascota> iniciarAplicacion(Propietario dueño) {
         System.out.println("SISTEMA DE GESTIÓN VETERINARIA");
-        System.out.print("¿Cuántas mascotas va a registrar?: ");
-        int cantidad = scn.nextInt();
-        Mascota[] mascotas = new Mascota[ cantidad ];
-        for (int i = 0; i < mascotas.length; i++) {
-            mascotas[i] = crearMascota();
-            mascotas[i].asignarPropietario(dueño);
-        }
+        ArrayList<Mascota> mascotas = new ArrayList<>();
+        String opcion;
+        do {
+            Mascota msc = crearMascota();
+            msc.asignarPropietario(dueño);
+            mascotas.add( msc );
+            System.out.print("¿Desea agregar otra mascota? (s/n): ");
+            opcion = scn.next();
+        } while( opcion.equals("s") );
         return mascotas;
     }
 
@@ -84,6 +87,8 @@ public class Programa {
         System.out.print("Fecha de nacimiento (yyyy-mm-dd): ");
         return LocalDate.parse( scn.next() );
     }
+
+
 
 
 }

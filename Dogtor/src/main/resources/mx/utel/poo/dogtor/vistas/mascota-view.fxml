@@ -11,7 +11,6 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.VBox?>
 
-
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mx.utel.poo.dogtor.vistas.MascotaController">
    <left>
       <VBox prefHeight="200.0" prefWidth="180.0" spacing="8.0" BorderPane.alignment="CENTER">
@@ -31,16 +30,16 @@
             <DatePicker fx:id="cmpFecha" maxWidth="1.7976931348623157E308" />
             <VBox alignment="BOTTOM_CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" prefHeight="200.0" prefWidth="100.0" spacing="8.0" VBox.vgrow="ALWAYS">
                <children>
-                  <Button fx:id="btnEliminar" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#eliminarMascota" text="ELIMINAR" />
-                  <Button fx:id="btnGuardar" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#guardarMascota" text="GUARDAR" />
-                  <Button fx:id="btnAgregar" defaultButton="true" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#agregarMascota" text="AGREGAR" />
+                  <Button fx:id="btnEliminar" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#eliminar" text="ELIMINAR" />
+                  <Button fx:id="btnGuardar" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#guardar" text="GUARDAR" />
+                  <Button fx:id="btnAgregar" defaultButton="true" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#agregar" text="AGREGAR" />
                </children>
             </VBox>
          </children>
       </VBox>
    </left>
    <center>
-      <TableView onMouseClicked="#seleccionarMascota" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+      <TableView fx:id="tablaMascotas" onMouseClicked="#seleccionar" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
         <columns>
           <TableColumn fx:id="colNombre" prefWidth="75.0" text="NOMBRE" />
           <TableColumn fx:id="colEspecie" prefWidth="75.0" text="ESPECIE" />

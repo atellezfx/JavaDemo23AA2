@@ -1,5 +1,8 @@
 package mx.utel.poo.dogtor.util;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+
 /**
  *  Diferencia Talla chica y mediana es de 5 años
  *  Diferencia Talla grande es de 6 años
@@ -18,4 +21,9 @@ public enum Talla {
     public int getDiferencia() {
         return diferencia;
     }
+
+    public static ObservableList<Talla> observableList() {
+        return FXCollections.observableArrayList( values() );
+    }
+
 }
