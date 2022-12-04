@@ -26,4 +26,8 @@ public enum Talla {
         return FXCollections.observableArrayList( values() );
     }
 
+    @Override
+    public String toString() {
+        return name().replace('_', ' ');
+    }
 }

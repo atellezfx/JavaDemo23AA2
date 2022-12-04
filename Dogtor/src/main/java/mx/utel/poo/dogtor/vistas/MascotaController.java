@@ -13,6 +13,7 @@ import mx.utel.poo.dogtor.util.Talla;
 
 import java.net.URL;
 import java.time.LocalDate;
+import java.time.Period;
 import java.util.ResourceBundle;
 
 public class MascotaController implements Initializable {
@@ -21,6 +22,7 @@ public class MascotaController implements Initializable {
     @FXML private DatePicker cmpFecha;
     @FXML private ComboBox<Genero> cmpGenero;
     @FXML private TextField cmpNombre;
+    @FXML private TextField cmpEdad;
     @FXML private ComboBox<Talla> cmpTalla;
     @FXML private TableView<Mascota> tablaMascotas;
     @FXML private TableColumn<Mascota, Especie> colEspecie;
@@ -52,31 +54,35 @@ public class MascotaController implements Initializable {
     @FXML
     private void eliminar() {
         Mascota m = tablaMascotas.getSelectionModel().getSelectedItem();
-        mascotas.remove(m);
+        if( m != null ) mascotas.remove(m);
         limpiar();
     }
 
     @FXML
     private void guardar() {
-        int seleccionado = tablaMascotas.getSelectionModel().getSelectedIndex();
-        Mascota m = mascotas.get( seleccionado );
-        m.setNombre( cmpNombre.getText() );
-        m.setEspecie( cmpEspecie.getValue() );
-        m.setTalla( cmpTalla.getValue() );
-        m.setGenero( cmpGenero.getValue() );
-        m.setFechaNac( cmpFecha.getValue() );
-        mascotas.set(seleccionado, m);
+        Mascota m = tablaMascotas.getSelectionModel().getSelectedItem();
+        if( m != null ) {
+            m.setNombre( cmpNombre.getText() );
+            m.setEspecie( cmpEspecie.getValue() );
+            m.setGenero( cmpGenero.getValue() );
+            m.setTalla( cmpTalla.getValue() );
+            m.setFechaNac( cmpFecha.getValue() );
+        }
+        tablaMascotas.refresh();
         limpiar();
     }
 
     @FXML
     private void seleccionar() {
         Mascota m = tablaMascotas.getSelectionModel().getSelectedItem();
-        cmpNombre.setText(m.getNombre());
-        cmpEspecie.setValue(m.getEspecie());
-        cmpTalla.setValue(m.getTalla());
-        cmpGenero.setValue(m.getGenero());
-        cmpFecha.setValue(m.getFechaNac());
+        if( m != null ) {
+            cmpNombre.setText( m.getNombre() );
+            cmpEspecie.setValue( m.getEspecie() );
+            cmpGenero.setValue( m.getGenero() );
+            cmpTalla.setValue( m.getTalla() );
+            cmpFecha.setValue( m.getFechaNac() );
+            cmpEdad.setText( String.valueOf(m.edad()) );
+        }
     }
 
     private Mascota crearMascota() {
@@ -95,7 +101,17 @@ public class MascotaController implements Initializable {
         cmpTalla.setValue(null);
         cmpGenero.setValue(null);
         cmpFecha.setValue(null);
+        cmpEdad.setText(null);
         tablaMascotas.getSelectionModel().clearSelection();
+    }
+
+    @FXML
+    private void mostrarEdad() {
+        LocalDate fechaNac = cmpFecha.getValue();
+        if( fechaNac != null ) {
+            Period per = Period.between( cmpFecha.getValue(), LocalDate.now() );
+            cmpEdad.setText( String.valueOf( per.getYears() ) );
+        }
     }
 
     public static URL getView(){

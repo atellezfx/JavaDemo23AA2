@@ -27,7 +27,9 @@
             <Label text="Especie:" />
             <ComboBox fx:id="cmpEspecie" maxWidth="1.7976931348623157E308" prefWidth="150.0" />
             <Label text="Fecha de nacimiento:" />
-            <DatePicker fx:id="cmpFecha" maxWidth="1.7976931348623157E308" />
+            <DatePicker fx:id="cmpFecha" maxWidth="1.7976931348623157E308" onAction="#mostrarEdad" />
+            <Label text="Edad:" />
+            <TextField fx:id="cmpEdad" editable="false" maxWidth="1.7976931348623157E308" />
             <VBox alignment="BOTTOM_CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" prefHeight="200.0" prefWidth="100.0" spacing="8.0" VBox.vgrow="ALWAYS">
                <children>
                   <Button maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#limpiar" text="LIMPIAR" />
