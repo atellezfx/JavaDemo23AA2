@@ -14,7 +14,7 @@ public class Mascota {
     private Especie especie;
     private Genero genero;
     private LocalDate fechaNac;
-    private Propietario dueño;
+    private Propietario propietario;
 
     public Mascota(String nombre, Especie especie, Genero genero, Talla talla, LocalDate fechaNac) {
         this.nombre = nombre;
@@ -71,12 +71,12 @@ public class Mascota {
     }
 
     public void asignarPropietario(Propietario prop) {
-        this.dueño = prop;
+        this.propietario = prop;
     }
 
     @Override
     public String toString() {
         String cadena = "Mascota[nombre='%s', tipo='%s', genero='%s', dueño='%s', edad='%d']";
-        return cadena.formatted(nombre, especie, genero, dueño, edad());
+        return cadena.formatted(nombre, especie, genero, propietario, edad());
     }
 }

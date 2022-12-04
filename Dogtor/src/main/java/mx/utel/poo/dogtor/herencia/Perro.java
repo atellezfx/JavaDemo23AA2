@@ -13,7 +13,7 @@ public final class Perro extends Mascota {
 
     @Override
     public void comer() {
-        System.out.println("El perro está comiento un sirloin");
+        System.out.println("El perro está comiendo un sirloin");
     }
 
     @Override

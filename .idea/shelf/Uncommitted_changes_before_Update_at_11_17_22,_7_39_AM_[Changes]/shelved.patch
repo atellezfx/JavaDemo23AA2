@@ -1,0 +1,78 @@
+Index: Dogtor/src/main/java/mx/utel/poo/dogtor/beans/Mascota.java
+===================================================================
+diff --git a/Dogtor/src/main/java/mx/utel/poo/dogtor/beans/Mascota.java b/Dogtor/src/main/java/mx/utel/poo/dogtor/beans/Mascota.java
+--- a/Dogtor/src/main/java/mx/utel/poo/dogtor/beans/Mascota.java	
++++ b/Dogtor/src/main/java/mx/utel/poo/dogtor/beans/Mascota.java	
+@@ -1,5 +1,7 @@
+ package mx.utel.poo.dogtor.beans;
+ 
++import mx.utel.poo.dogtor.util.CalculadoraEdad;
++
+ import java.time.LocalDate;
+ import java.time.Period;
+ 
+@@ -26,24 +28,16 @@
+         return per.getYears();
+     }
+ 
+-    public int edadHumana() {
+-        if( tipo.equalsIgnoreCase("Perro") ) {
+-            int edadNatural = edad();
+-            if( edadNatural == 1 ) return 16;
+-            if( edadNatural == 2 ) return 24;
+-            return calcularEdad( edadNatural );
+-        } else {
+-            return -1;
+-        }
++    public String getTalla() {
++        return talla;
++    }
++
++    public String getTipo() {
++        return tipo;
+     }
+ 
+-    private int calcularEdad(int edadNatural) {
+-        return switch(talla) {
+-            case "chica", "mediana" -> 24 + ((edadNatural - 2) * 5);
+-            case "grande" -> 24 + ((edadNatural - 2) * 6);
+-            case "extragrande" -> 24 + ((edadNatural - 2) * 7);
+-            default -> -1;
+-        };
++    public LocalDate getFechaNac() {
++        return fechaNac;
+     }
+ 
+     public void asignarPropietario(Propietario prop) {
+@@ -52,7 +46,8 @@
+ 
+     @Override
+     public String toString() {
++        CalculadoraEdad calc = new CalculadoraEdad();
+         String cadena = "Mascota[nombre='%s', tipo='%s', genero='%s', dueño='%s', edad='%d', edadHumana='%d']";
+-        return cadena.formatted(nombre, tipo, genero, dueño, edad(), edadHumana());
++        return cadena.formatted(nombre, tipo, genero, dueño, edad(), calc.edadHumana( this ));
+     }
+ }
+Index: Dogtor/src/main/java/mx/utel/poo/dogtor/beans/Programa.java
+===================================================================
+diff --git a/Dogtor/src/main/java/mx/utel/poo/dogtor/beans/Programa.java b/Dogtor/src/main/java/mx/utel/poo/dogtor/beans/Programa.java
+--- a/Dogtor/src/main/java/mx/utel/poo/dogtor/beans/Programa.java	
++++ b/Dogtor/src/main/java/mx/utel/poo/dogtor/beans/Programa.java	
+@@ -16,9 +16,13 @@
+         Mascota m3 = new Mascota("Kia", "Perro", "Hembra", "grande", LocalDate.parse("2016-01-14"));
+         m3.asignarPropietario( dueño );
+ 
+-        System.out.println(m1);
+-        System.out.println(m2);
+-        System.out.println(m3);
++        Mascota m4 = new Mascota("Teo", "Gato", "Macho", "grande", LocalDate.parse("2022-08-14"));
++        m4.asignarPropietario( dueño );
++
++//        System.out.println(m1);
++//        System.out.println(m2);
++//        System.out.println(m3);
++        System.out.println(m4);
+ 
+     }
+ 
