@@ -8,10 +8,6 @@ public class MaestroTostador extends Empleado {
         super(nombre);
     }
     
-    public MaestroTostador crearObjeto(String nombre) {
-        return null;
-    }
-
     @Override
     protected void trabajar() {
         try {

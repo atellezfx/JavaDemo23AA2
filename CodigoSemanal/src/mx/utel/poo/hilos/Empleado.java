@@ -3,7 +3,7 @@ package mx.utel.poo.hilos;
 public abstract class Empleado extends Thread {
 
     private final int HORAS_LABORABLES = 4;
-    protected final Granero granero = new Granero();
+    protected static final Granero granero = new Granero();
 
     public Empleado(String nombre) {
         super(nombre);
