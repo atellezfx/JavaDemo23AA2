@@ -22,8 +22,9 @@ public class ProgramaFuncional {
     }
 
     private void contratar(Function<String, Empleado> funcion,  String ... nombres) {
-        var lista = Arrays.stream( nombres ).map( funcion ).toList();
-        empleados.addAll( lista );
+        Arrays.stream( nombres )
+                .map( funcion )
+                .forEach( empleados::add );
     }
 
 }
